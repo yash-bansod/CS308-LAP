@@ -15,6 +15,10 @@ int main(int argc, char* argv[]) {
 	}
     if(strlen(argv[1])>0){
         for(int i=0;i<strlen(argv[1]);i++){
+            if(i==0){
+                if(argv[1][i]=='-')
+                    continue;
+            }
             if(!isdigit(argv[1][i])){
                 printf("Input not a number\n");
                 exit(-1);
@@ -22,7 +26,10 @@ int main(int argc, char* argv[]) {
         }
     }
 	int input = atoi(argv[1]);
-	printf("Sqrt of %d is %f\n",input,sqrt(input));
+    if(input>=0)
+	    printf("Sqrt of %d is %f\n",input,sqrt(input));
+    else
+	    printf("Sqrt of %d is %fi\n",input,sqrt(-input));
     printf("End of program. Exiting\n");
 	return(0);
 
